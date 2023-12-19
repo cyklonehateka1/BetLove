@@ -1,0 +1,114 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 17px;
+    width: 93.56%;
+    z-index: 1000;
+    /* border: 1px solid red; */
+}
+
+.navbar>.navCont {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px;
+}
+
+.navbar>.navCont>.top>.navLogo {
+    width: 15%;
+    /* border: 1px solid red; */
+}
+
+.navbar>.navCont>.navLogo>img {
+    width: 100%;
+}
+
+.navbar>.navCont>.center {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.navbar>.navCont>.center>ul {
+    display: flex;
+}
+
+.navbar>.navCont>.center>ul>li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+.navbar>.navCont>.center>ul>li>a {
+    text-decoration: none;
+    color: rgb(233, 233, 233);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+
+
+
+
+
+.navbar>.navCont>.right {
+    display: flex;
+    width: 21%;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.navbar>.navCont>.right>.balance {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.navbar>.navCont>.right>.openBets {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    background-color: rgb(0, 185, 185);
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.navbar>.navCont>.right>.account {
+    display: flex;
+    align-items: center;
+}
+
+.navbar>.navCont>.right>.account>.imgCont {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.navbar>.navCont>.right>.account>.imgCont>img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.navbar>.navCont>.right>.account>.textCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navbar>.navCont>.right>.account>.textCont>p {
+    font-size: 14px;
+    color: rgb(212, 212, 212);
+}
+
+.navbar>.navCont>.right>.account>.textCont>span {
+    font-size: 12px;
+    color: rgb(194, 194, 194);
+}

@@ -1,0 +1,53 @@
+.home {
+    padding: 0;
+    margin: 0;
+    max-width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    align-items: center;
+}
+
+.home>.homeCont {
+    padding: 0 20px;
+    /* border: 1px solid red; */
+    height: 100vh;
+    width: 96%;
+    position: relative;
+
+    left: 4%;
+}
+
+.home>.homeCont>.homeContent {
+    width: 100%;
+    display: flex;
+    position: relative;
+    height: 88.6%;
+    top: 11.4vh;
+
+}
+
+.home>.homeCont>.homeContent>.left {
+    width: 15%;
+    height: 99%;
+    /* border: 1px solid red; */
+    position: fixed;
+    padding: 0;
+    /* overflow-y: scroll; */
+}
+
+.home>.homeCont>.homeContent>.center {
+    width: 60%;
+    position: relative;
+    left: 18%;
+}
+
+.home>.homeCont>.homeContent>.center>.liveMatchesParent {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.home>.homeCont>.homeContent>.center>.liveMatchesParent>div {
+    width: 31.5%;
+}

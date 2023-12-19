@@ -1,0 +1,92 @@
+.hero {
+    width: 100%;
+    height: 31vh;
+    /* border: 1px solid red; */
+    border-radius: 10px;
+}
+
+.hero>.heroCont {
+    width: 100%;
+    display: flex;
+    height: 100%;
+}
+
+.hero>.heroCont>.sliderCont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    align-items: center;
+    background-color: rgb(33, 33, 255);
+}
+
+.hero>.heroCont>.sliderCont>.left {
+    height: 100%;
+    padding: 20px;
+}
+
+.hero>.heroCont>.sliderCont>.left>.sliderTrack {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.hero>.heroCont>.sliderCont>.left>.sliderTrack>span {
+    margin-right: 7px;
+    border: none;
+    background-color: rgb(184, 184, 184);
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+}
+
+.hero>.heroCont>.sliderCont>.left>.sliderTrack>.active {
+    border: 3px solid white;
+    background: none;
+}
+
+.hero>.heroCont>.sliderCont>.left>.text {
+    margin-bottom: 20px;
+}
+
+.hero>.heroCont>.sliderCont>.left>.text>h1 {
+    font-family: 'Montserrat Alternates',
+        sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    margin-bottom: -10px;
+    color: white;
+}
+
+.hero>.heroCont>.sliderCont>.left>.text>h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+}
+
+.hero>.heroCont>.sliderCont>.left>button {
+    width: 130px;
+    height: 40px;
+    border: none;
+    background-color: white;
+    color: blue;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.hero>.heroCont>.sliderCont>.right {
+    padding: 20px;
+    /* border: 1px solid red; */
+    position: relative;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero>.heroCont>.sliderCont>.right>img {
+    position: relative;
+    width: 50%;
+    bottom: 22px;
+}

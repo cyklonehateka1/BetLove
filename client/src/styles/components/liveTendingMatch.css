@@ -1,0 +1,209 @@
+.ltm {
+    width: 100%;
+    border: 1px solid rgb(61, 61, 61);
+    border-radius: 10px;
+    padding-top: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ltm>.ltmCont {
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.ltm>.ltmCont>.textStatusCont {
+    width: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ltm>.ltmCont>.textStatusCont>.text>h5 {
+    font-size: 10px;
+    color: rgb(238, 238, 238);
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.ltm>.ltmCont>.textStatusCont>.text>span {
+    font-size: 10px;
+    color: rgb(156, 156, 156);
+}
+
+.ltm>.ltmCont>.textStatusCont>button {
+    background-color: rgb(250, 38, 38);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    width: 55px;
+    height: 25px;
+    font-size: 13px;
+}
+
+.ltm>.ltmCont>.teamsScores {
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.ltm>.ltmCont>.teamsScores>.left {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid red */
+}
+
+.ltm>.ltmCont>.teamsScores>.left>.imgCont {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    height: 97%;
+    /* /* border: 1px solid red; */
+
+}
+
+.ltm>.ltmCont>.teamsScores>.left>.imgCont>img {
+    width: 100%;
+}
+
+.ltm>.ltmCont>.teamsScores>.left>span {
+    text-align: center;
+    font-size: 12px;
+    color: rgb(238, 238, 238);
+}
+
+
+.ltm>.ltmCont>.teamsScores>.center {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ltm>.ltmCont>.teamsScores>.center>.scores {
+    display: flex;
+    margin: 10px 0 5px 0;
+    align-items: center;
+}
+
+.ltm>.ltmCont>.teamsScores>.center>.scores>span {
+    margin: 0 10px;
+    color: rgb(238, 238, 238);
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.ltm>.ltmCont>.teamsScores>.center>.scores>p {
+    font-size: 16px;
+    color: rgb(238, 238, 238);
+    font-weight: 600;
+}
+
+.ltm>.ltmCont>.teamsScores>.center>span {
+    font-size: 13px;
+    color: rgb(173, 173, 173);
+}
+
+.ltm>.ltmCont>.teamsScores>.right {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+}
+
+.ltm>.ltmCont>.teamsScores>.right>.imgCont {
+    width: 70%;
+    height: 97%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ltm>.ltmCont>.teamsScores>.right>span {
+    text-align: center;
+    font-size: 14px;
+    color: rgb(238, 238, 238);
+}
+
+.ltm>.ltmCont>.teamsScores>.right>.imgCont>img {
+    width: 100%;
+    /* border: 1px solid red; */
+}
+
+.ltm>.ltmCont>.actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.ltm>.ltmCont>.actions>.bookmark {
+    width: 20%;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(92, 92, 92);
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.ltm>.ltmCont>.actions>.bet {
+    width: 45%;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(0, 185, 185);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    text-transform: capitalize;
+    border: none;
+}
+
+.ltm>.ltmCont>.actions>.notify {
+    width: 30%;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    background-color: rgb(92, 92, 92);
+    border: none;
+}
+
+.ltm>.details {
+    width: 100%;
+    border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 30px;
+    background-color: rgb(0, 185, 185);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    cursor: pointer;
+}

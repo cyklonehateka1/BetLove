@@ -1,0 +1,94 @@
+.leaguesComponent {
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+
+.leaguesComponent>.lCCont {
+    width: 100%;
+}
+
+.leaguesComponent>.lCCont>.textOptionsCont {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.leaguesComponent>.lCCont>.textOptionsCont>h5 {
+    font-size: 17px;
+    color: white;
+    font-weight: 500;
+}
+
+.leaguesComponent>.lCCont>.textOptionsCont>span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    height: 20px;
+    width: 30px;
+    cursor: pointer;
+    color: white;
+    transition: 0.2s;
+}
+
+.leaguesComponent>.lCCont>.textOptionsCont>span:hover {
+    background-color: rgba(0, 185, 185, 0.445);
+    color: rgb(0, 185, 185);
+    border-radius: 5px;
+}
+
+.leaguesComponent>.lCCont>.leaguesContent {
+    width: 100%;
+    border: 1px solid rgb(61, 61, 61);
+    border-radius: 10px;
+}
+
+.leaguesComponent>.lCCont>.leaguesContent>.league {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgb(61, 61, 61);
+    padding: 5px 10px;
+}
+
+.leaguesComponent>.lCCont>.leaguesContent>.bundesliga {
+    border-bottom: none;
+}
+
+.leaguesComponent>.lCCont>.leaguesContent>.league>.imgCont {
+    width: 15%;
+}
+
+.leaguesComponent>.lCCont>.leaguesContent>.league>.imgCont>img {
+    width: 100%;
+}
+
+.leaguesComponent>.lCCont>.leaguesContent>.league>.text {
+    /* border: 1px solid red; */
+    width: 70%;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.leaguesComponent>.lCCont>.leaguesContent>.league>.text>h5 {
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+}
+
+.leaguesComponent>.lCCont>.leaguesContent>.league>.text>span {
+    font-size: 11px;
+    color: rgb(167, 167, 167);
+}
+
+.leaguesComponent>.lCCont>.leaguesContent>.league>span {
+    width: 15%;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
