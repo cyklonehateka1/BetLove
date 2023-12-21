@@ -7,6 +7,7 @@ Base = declared_base()
 
 class User(Base):
     __tablename__="users"
+    
     id=Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True, index=True, nullable=False)
     name=Column(String, index=True, nullable=False)
     email=Column(String, nullable=False, unique=True)
