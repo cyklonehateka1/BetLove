@@ -1,17 +1,20 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 class UserBase(BaseModel):
     email:str
+    name:str
+    phone_number:str
+    country:str
+    dob: datetime
 
 class CreateUser(UserBase):
     password:str
     
 class UserModel(UserBase):
     id: int
-    name:str
-    mobile_number:str
-    country:str
-    dob:str
+    balance:int
+    dob:datetime
 
     class Config:
         orm_mode = True
