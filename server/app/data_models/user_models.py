@@ -1,7 +1,8 @@
+import sys
+sys.path.extend(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\config")
 import uuid
-from sqlalchemy import Column, String, Integer, create_engine, Sequence, UUID,DateTime,func
-from sqlalchemy.ext.declarative import declared_base
-from config.database import Base
+from sqlalchemy import Column, String, Integer, UUID,DateTime,func
+from database import Base
 
 
 class User(Base):

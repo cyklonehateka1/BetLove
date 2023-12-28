@@ -8,8 +8,10 @@ password: str|None = os.environ.get('db_password')
 host: str|None = os.environ.get('db_host')
 db_name: str|None = os.environ.get('db_name')
 
+print(username)
+
 engine = create_engine(f'postgresql://{username}:{password}@{host}/{db_name}')
 
-SessionLocale = sessionmaker(autocomit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
