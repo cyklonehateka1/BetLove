@@ -22,9 +22,10 @@ def get_db():
     finally:
         db.close()
 
-@router.post("/auth/register", response_model=user_schema.UserModel)
+
+@router.post("/register", response_model=user_schema.UserModel)
 def register(user:user_schema.CreateUser, db: Session = Depends(get_db)):
-    get_user = auth_service.check_user(db=get_db, email=user.email)
+    get_user = auth_service.check_user(db, email=user.email)
     if get_user:
         HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already used")
     user = auth_service.create_user(db=db, user=user)

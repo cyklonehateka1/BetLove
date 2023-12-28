@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel,UUID4
 from datetime import datetime
 
 class UserBase(BaseModel):
@@ -12,7 +12,7 @@ class CreateUser(UserBase):
     password:str
     
 class UserModel(UserBase):
-    id: int
+    id: UUID4
     balance:int
     dob:datetime
 
