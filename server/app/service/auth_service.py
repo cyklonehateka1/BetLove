@@ -5,6 +5,7 @@ sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\ser
 import sys
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\utils")
 from sqlalchemy.orm import Session
+from typing import Annotated
 from fastapi import HTTPException, status
 import user_models
 import user_schema
@@ -15,13 +16,14 @@ def check_user(db: Session, email: str):
     return db.query(user_models.User).filter(user_models.User.email == email).first()
 
 def authenticate_user(db:Session, username:str, password:str):
-    check_email = check_user(db=db, email=username)
+    user = check_user(db=db, email=username)
 
-    if not check_email:
+    if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="No user found")
     
-    if not hash.verify_password(plain_password=password, hashed_password=check_email.password):
+    if not hash.verify_password(plain_password=password, hashed_password=user.password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Wrong password")
+    return user
 
 def create_user(db:Session, user:user_schema.CreateUser):
 
@@ -31,3 +33,5 @@ def create_user(db:Session, user:user_schema.CreateUser):
     db.commit()
     db.refresh(db_user)
     return db_user
+
+
