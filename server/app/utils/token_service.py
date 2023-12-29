@@ -2,10 +2,7 @@ from jose import jwt, JWTError
 import os
 from datetime import timedelta, datetime
 
-
-
 ALGORITHM = 'HS256'
-
 
 def create_access_token(data: dict, secret_key: str | None, expires_delta: timedelta | None = None):
     to_encode = data.copy()

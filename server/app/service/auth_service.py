@@ -2,13 +2,26 @@ import sys
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\data_models")
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\schemas")
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\utils")
+import sys
+sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\utils")
 from sqlalchemy.orm import Session
+from fastapi import HTTPException, status
 import user_models
 import user_schema
 import hash
 
+
 def check_user(db: Session, email: str):
     return db.query(user_models.User).filter(user_models.User.email == email).first()
+
+def authenticate_user(db:Session, username:str, password:str):
+    check_email = check_user(db=db, email=username)
+
+    if not check_email:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="No user found")
+    
+    if not hash.verify_password(plain_password=password, hashed_password=check_email.password):
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Wrong password")
 
 def create_user(db:Session, user:user_schema.CreateUser):
 

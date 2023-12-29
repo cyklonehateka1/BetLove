@@ -27,7 +27,8 @@ def get_db():
 def register(user:user_schema.CreateUser, db: Session = Depends(get_db)):
     get_user = auth_service.check_user(db, email=user.email)
     if get_user:
-        HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already used")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already used")
     user = auth_service.create_user(db=db, user=user)
     return user
+
 
