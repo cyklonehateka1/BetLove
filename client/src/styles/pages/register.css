@@ -1,0 +1,49 @@
+.register {
+    width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register>.registerCont {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register>.registerCont>.left {
+    width: 35%;
+    height: 100%;
+    height: 100%;
+    position: relative;
+    left: 50px;
+    background-color: white;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.register>.registerCont>.left>.top {
+    width: 100%;
+    height: 80%;
+}
+
+.register>.registerCont>.left>.top>.logoCont {
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.register>.registerCont>.left>.top>.logoCont>img {
+    width: 100%;
+}
+
+
+
+.register>.registerCont>.right {
+    width: 65%;
+}
