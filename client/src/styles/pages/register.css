@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgb(0, 185, 185);
 }
 
 .register>.registerCont {
@@ -20,9 +21,7 @@
     height: 100%;
     height: 100%;
     position: relative;
-    left: 50px;
-    background-color: white;
-    padding: 30px;
+    left: 60px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -30,7 +29,10 @@
 
 .register>.registerCont>.left>.top {
     width: 100%;
-    height: 80%;
+    height: 75%;
+    padding: 5% 17%;
+    background-color: white;
+    /* border: 1px solid red; */
 }
 
 .register>.registerCont>.left>.top>.logoCont {
@@ -42,8 +44,181 @@
     width: 100%;
 }
 
+.register>.registerCont>.left>.top>h3 {
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 10px;
+    color: rgb(83, 83, 83);
+}
 
+.register>.registerCont>.left>.top>h2 {
+    margin-bottom: 10px;
+    color: rgb(0, 185, 185);
+}
+
+.register>.registerCont>.left>.top>.form1 {
+    width: 100%;
+}
+
+.register>.registerCont>.left>.top>.form1>div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.register>.registerCont>.left>.top>.form1>div>label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.register>.registerCont>.left>.top>.form1>div>input {
+    height: 35px;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 5px;
+    outline: none;
+    padding-left: 5px;
+}
+
+.register>.registerCont>.left>.top>.form1>div>input:active {
+    border: 3px solid rgb(190, 190, 190);
+}
 
 .register>.registerCont>.right {
     width: 65%;
+    height: 100%;
+    z-index: 1;
+    /* border: 1px solid red; */
+    padding-top: 100px;
+
+}
+
+.register>.registerCont>.right>.top {
+    width: 100%;
+    height: 90%;
+    box-shadow: -1px -1px 5px rgb(192, 192, 192);
+    display: flex;
+}
+
+.register>.registerCont>.right>.top>.left {
+    width: 50%;
+    /* border: 1px solid red; */
+    height: 100%;
+    background-color: white;
+    padding: 3% 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.register>.registerCont>.right>.top>.left>h3 {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 10px;
+    color: rgb(0, 185, 185);
+}
+
+.register>.registerCont>.right>.top>.left>.form2 {
+    width: 100%;
+}
+
+.register>.registerCont>.right>.top>.left>.form2>div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.register>.registerCont>.right>.top>.left>.form2>div>label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.register>.registerCont>.right>.top>.left>.form2>div>input {
+    height: 35px;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 5px;
+    outline: none;
+    padding-left: 5px;
+}
+
+.register>.registerCont>.right>.top>.left>.form2>div>div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+    align-items: center;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 5px;
+    padding-right: 5px;
+}
+
+.register>.registerCont>.right>.top>.left>.form2>div>div>input {
+    width: 90%;
+    height: 100%;
+    padding-left: 5px;
+    border: none;
+    outline: none;
+}
+
+.register>.registerCont>.right>.top>.left>.form2>div>div>p {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.register>.registerCont>.right>.top>.left>.form2>.terms {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.register>.registerCont>.right>.top>.left>.form2>.terms>input {
+    margin-right: 10px;
+    border: 1px solid red;
+    margin-top: -4px;
+}
+
+.register>.registerCont>.right>.top>.left>.form2>.terms>p {
+    font-size: 12px;
+
+}
+
+.register>.registerCont>.right>.top>.left>.form2>.terms>p>a {
+    color: rgb(0, 185, 185);
+    text-decoration: none;
+}
+
+
+
+.register>.registerCont>.right>.top>.left>.form2>button {
+    border: none;
+    background-color: rgb(0, 185, 185);
+    color: white;
+    width: 120px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.register>.registerCont>.right>.top>.left>.form2>p {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(255, 45, 45);
+
+}
+
+.register>.registerCont>.right>.top>.right {
+    background-image: linear-gradient(to top, #0000008f,
+            rgba(0, 0, 0, 0.479)),
+        url(../../assets/images/football1.jpg);
+    width: 50%;
+    height: 100%;
+    background-position: center;
+    /* background-repeat: no-repeat; */
+}
+
+.register>.registerCont>.right>.bottom {
+    height: 15%;
+    /* border: 1px solid red; */
 }

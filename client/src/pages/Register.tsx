@@ -1,5 +1,6 @@
 import "../styles/pages/register.css";
 import { Link } from "react-router-dom";
+import { PiEyeSlash, PiEyeLight } from "react-icons/pi";
 const Register = () => {
   return (
     <div className="register">
@@ -17,19 +18,37 @@ const Register = () => {
             <div className="form1">
               <div className="firstName">
                 <label htmlFor="firstName">First Name</label>
-                <input type="text" name="firstName" />
+                <input
+                  type="text"
+                  name="firstName"
+                  id="firstname"
+                  placeholder="firstName"
+                  required
+                />
               </div>
               <div className="middleName">
                 <label htmlFor="middleName">Middle Name(s)</label>
-                <input type="text" name="middleName" />
+                <input
+                  type="text"
+                  name="middleName"
+                  id="middlename"
+                  placeholder="middleName"
+                  required
+                />
               </div>
               <div className="lastName">
                 <label htmlFor="lastName">Last Name</label>
-                <input type="text" name="lastName" />
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastname"
+                  placeholder="lastName"
+                  required
+                />
               </div>
               <div className="dob">
                 <label htmlFor="dob"> Date of Birth</label>
-                <input type="date" name="dob" id="dob" />
+                <input type="date" name="dob" id="dob" required />
               </div>
             </div>
           </div>
@@ -38,58 +57,64 @@ const Register = () => {
           </div>
         </div>
         <div className="right">
-          <div className="left">
-            <h3>be a winner</h3>
+          <div className="top">
+            <div className="left">
+              <h3>be a winner</h3>
 
-            <div className="form2">
-              <div className="email">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="example@mail.com"
-                  required
-                />
-              </div>
-
-              <div className="password">
-                <label htmlFor="password">Password</label>
-                <div className="inputCont">
+              <div className="form2">
+                <div className="email">
+                  <label htmlFor="email">Email</label>
                   <input
-                    type={"password"}
-                    name="password"
-                    id="password"
-                    placeholder="Your Password"
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="example@mail.com"
                     required
                   />
                 </div>
-              </div>
 
-              <div className="phone">
-                <label htmlFor="phone">Phone Number</label>
-                <input
-                  type="text"
-                  name="phone"
-                  id="phone"
-                  placeholder="Phone Number"
-                  required
-                />
-              </div>
+                <div className="password">
+                  <label htmlFor="password">Password</label>
+                  <div className="inputCont">
+                    <input
+                      type={"password"}
+                      name="password"
+                      id="password"
+                      placeholder="Your Password"
+                      required
+                    />
+                    <p>
+                      <PiEyeSlash />
+                    </p>
+                  </div>
+                </div>
 
-              <div className="terms">
-                <input type="checkbox" />
-                <p>
-                  By signing up, you agree to our{" "}
-                  <Link to="/">terms and conditions</Link>
-                </p>
-              </div>
+                <div className="phone">
+                  <label htmlFor="phone">Phone Number</label>
+                  <input
+                    type="text"
+                    name="phone"
+                    id="phone"
+                    placeholder="Phone Number"
+                    required
+                  />
+                </div>
 
-              <p>{"Something went wrong"}</p>
-              <button>Sign Up</button>
+                <div className="terms">
+                  <input type="checkbox" />
+                  <p>
+                    By signing up, you agree to our{" "}
+                    <Link to="/">terms and conditions</Link>
+                  </p>
+                </div>
+
+                <button>Sign Up</button>
+                <p>{""}</p>
+              </div>
             </div>
+            <div className="right"></div>
           </div>
-          <div className="right"></div>
+          <div className="bottom"></div>
         </div>
       </div>
     </div>
