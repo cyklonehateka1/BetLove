@@ -53,7 +53,10 @@ const Register = () => {
             </div>
           </div>
           <div className="bottom">
-            <h2>win with love</h2>
+            <h2>
+              win with
+              <br /> love
+            </h2>
           </div>
         </div>
         <div className="right">
@@ -114,7 +117,16 @@ const Register = () => {
             </div>
             <div className="right"></div>
           </div>
-          <div className="bottom"></div>
+          <div className="bottom">
+            <h3>Partners </h3>
+            <div className="vertLine"></div>
+            <div className="imgCont">
+              <img src="https://i.ibb.co/QpndRpf/club-logo.png" alt="" />
+            </div>
+            <div className="imgCont">
+              <img src="https://i.ibb.co/WyRSJWv/logo2.png" alt="" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
