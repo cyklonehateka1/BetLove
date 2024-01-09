@@ -1,7 +1,67 @@
 import "../styles/pages/register.css";
+import { backendConnection } from "../utils/axiosInstance";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PiEyeSlash, PiEyeLight } from "react-icons/pi";
 const Register = () => {
+  const [error, setError] = useState("");
+  const [viewPassword, setViewPassword] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const [done, setDone] = useState(false);
+  const [inputValue, setInputValue] = useState({
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    dob: "",
+    email: "",
+    password: "",
+    phone: "",
+  });
+
+  const handleChange = (e: any) => {
+    e.preventDefault();
+    setError("");
+    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+  };
+
+  const handlePasswordVisibility = () => {
+    if (viewPassword) {
+      setViewPassword(false);
+    } else {
+      setViewPassword(true);
+    }
+  };
+
+  const { firstName, middleName, lastName, email, password, dob, phone } =
+    inputValue;
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    if (
+      firstName.trim() === "" ||
+      lastName.trim() === "" ||
+      email.trim() === "" ||
+      password.trim() === "" ||
+      dob.trim() === "" ||
+      phone.trim() === ""
+    ) {
+      setError("All fields are required");
+    }
+    if (password.length < 6) {
+      setError("Password too short");
+    }
+  };
+
+  const handleCheck = () => {
+    if (checked) {
+      setChecked(false);
+    } else {
+      setChecked(true);
+    }
+  };
+
+  console.log(checked);
   return (
     <div className="register">
       <div className="registerCont">
@@ -24,6 +84,7 @@ const Register = () => {
                   id="firstname"
                   placeholder="firstName"
                   required
+                  onChange={handleChange}
                 />
               </div>
               <div className="middleName">
@@ -34,6 +95,7 @@ const Register = () => {
                   id="middlename"
                   placeholder="middleName"
                   required
+                  onChange={handleChange}
                 />
               </div>
               <div className="lastName">
@@ -44,11 +106,18 @@ const Register = () => {
                   id="lastname"
                   placeholder="lastName"
                   required
+                  onChange={handleChange}
                 />
               </div>
               <div className="dob">
                 <label htmlFor="dob"> Date of Birth</label>
-                <input type="date" name="dob" id="dob" required />
+                <input
+                  type="date"
+                  name="dob"
+                  id="dob"
+                  required
+                  onChange={handleChange}
+                />
               </div>
             </div>
           </div>
@@ -73,6 +142,7 @@ const Register = () => {
                     id="email"
                     placeholder="example@mail.com"
                     required
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -80,14 +150,15 @@ const Register = () => {
                   <label htmlFor="password">Password</label>
                   <div className="inputCont">
                     <input
-                      type={"password"}
+                      type={viewPassword ? "text" : "password"}
                       name="password"
                       id="password"
                       placeholder="Your Password"
                       required
+                      onChange={handleChange}
                     />
-                    <p>
-                      <PiEyeSlash />
+                    <p onClick={handlePasswordVisibility}>
+                      {viewPassword ? <PiEyeSlash /> : <PiEyeLight />}
                     </p>
                   </div>
                 </div>
@@ -100,19 +171,30 @@ const Register = () => {
                     id="phone"
                     placeholder="Phone Number"
                     required
+                    onChange={handleChange}
                   />
                 </div>
 
                 <div className="terms">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={checked}
+                    onChange={handleCheck}
+                  />
                   <p>
                     By signing up, you agree to our{" "}
                     <Link to="/">terms and conditions</Link>
                   </p>
                 </div>
 
-                <button>Sign Up</button>
-                <p>{""}</p>
+                <button
+                  onClick={handleSubmit}
+                  // disabled={done}
+                  // style={{ cursor: "not-allowed" }}
+                >
+                  Sign Up
+                </button>
+                <p>{error}</p>
               </div>
             </div>
             <div className="right"></div>
