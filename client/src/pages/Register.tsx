@@ -7,7 +7,7 @@ const Register = () => {
   const [error, setError] = useState("");
   const [viewPassword, setViewPassword] = useState(false);
   const [checked, setChecked] = useState(false);
-  const [done, setDone] = useState(false);
+  // const [done, setDone] = useState(false);
   const [inputValue, setInputValue] = useState({
     firstName: "",
     middleName: "",
@@ -35,6 +35,26 @@ const Register = () => {
   const { firstName, middleName, lastName, email, password, dob, phone } =
     inputValue;
 
+  const registerCredentials = {
+    name: firstName + " " + middleName + " " + lastName,
+    email,
+    password,
+    phone,
+    dob,
+  };
+
+  const signup = async () => {
+    try {
+      const res = await backendConnection.post(
+        "/auth/signup",
+        registerCredentials
+      );
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
@@ -47,10 +67,14 @@ const Register = () => {
       phone.trim() === ""
     ) {
       setError("All fields are required");
+      return;
     }
     if (password.length < 6) {
       setError("Password too short");
+      return;
     }
+
+    signup();
   };
 
   const handleCheck = () => {

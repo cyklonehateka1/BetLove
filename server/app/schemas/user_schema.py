@@ -18,3 +18,5 @@ class UserModel(UserBase):
 
     class Config:
         from_attributes = True
+
+print(datetime.now().date())

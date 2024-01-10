@@ -31,7 +31,7 @@ def get_db():
         db.close()
 
 
-@router.post("/register", response_model=user_schema.UserModel)
+@router.post("/signup", response_model=user_schema.UserModel)
 def register(user:user_schema.CreateUser, db: Session = Depends(get_db)):
     get_user = auth_service.check_user(db, email=user.email)
     if get_user:

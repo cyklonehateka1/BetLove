@@ -10,6 +10,7 @@ from fastapi import HTTPException, status
 import user_models
 import user_schema
 import hash
+from datetime import datetime
 
 
 def check_user(db: Session, email: str):
@@ -25,10 +26,13 @@ def authenticate_user(db:Session, username:str, password:str):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Wrong password")
     return user
 
+    
+
 def create_user(db:Session, user:user_schema.CreateUser):
 
+    changeDate = datetime.strptime(user.dob,"%Y-%m-%d")
     hash_password:str = hash.get_password_hash(user.password)
-    db_user = user_models.User(email=user.email, password=hash_password, name=user.name, dob=user.dob, phone_number=user.phone_number)
+    db_user = user_models.User(email=user.email, password=hash_password, name=user.name, dob=changeDate, phone_number=user.phone)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
