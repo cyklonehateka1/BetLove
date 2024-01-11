@@ -45,3 +45,7 @@ async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()], db:S
     access_token = create_access_token(data={"sub": user.email}, secret_key=secret_key, expires_delta=expire)
 
     return {"access_token": access_token, "token_type": "bearer"}
+
+@router.post('/signup/confirmaccount/{token}')
+def confirm_account():
+    return ""

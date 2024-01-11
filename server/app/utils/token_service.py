@@ -1,5 +1,4 @@
-from jose import jwt, JWTError
-import os
+from jose import jwt
 from datetime import timedelta, datetime
 
 ALGORITHM = 'HS256'
