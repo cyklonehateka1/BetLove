@@ -3,6 +3,7 @@ import { backendConnection } from "../utils/axiosInstance";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PiEyeSlash, PiEyeLight } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
   const [error, setError] = useState("");
   const [viewPassword, setViewPassword] = useState(false);
@@ -15,7 +16,7 @@ const Register = () => {
     dob: "",
     email: "",
     password: "",
-    phone: "",
+    phone_number: "",
   });
 
   const handleChange = (e: any) => {
@@ -32,24 +33,28 @@ const Register = () => {
     }
   };
 
-  const { firstName, middleName, lastName, email, password, dob, phone } =
-    inputValue;
+  const {
+    firstName,
+    middleName,
+    lastName,
+    email,
+    password,
+    dob,
+    phone_number,
+  } = inputValue;
 
   const registerCredentials = {
     name: firstName + " " + middleName + " " + lastName,
     email,
     password,
-    phone,
+    phone_number,
     dob,
   };
-
+  const navigate = useNavigate();
   const signup = async () => {
     try {
-      const res = await backendConnection.post(
-        "/auth/signup",
-        registerCredentials
-      );
-      console.log(res.data);
+      await backendConnection.post("/auth/signup", registerCredentials);
+      navigate("/auth/emailsent");
     } catch (err) {
       console.log(err);
     }
@@ -64,7 +69,7 @@ const Register = () => {
       email.trim() === "" ||
       password.trim() === "" ||
       dob.trim() === "" ||
-      phone.trim() === ""
+      phone_number.trim() === ""
     ) {
       setError("All fields are required");
       return;
@@ -85,7 +90,6 @@ const Register = () => {
     }
   };
 
-  console.log(checked);
   return (
     <div className="register">
       <div className="registerCont">
@@ -191,7 +195,7 @@ const Register = () => {
                   <label htmlFor="phone">Phone Number</label>
                   <input
                     type="text"
-                    name="phone"
+                    name="phone_number"
                     id="phone"
                     placeholder="Phone Number"
                     required

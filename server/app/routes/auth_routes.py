@@ -18,8 +18,6 @@ import user_schema
 import auth_service
 import token_models
 
-
-
 router = APIRouter(prefix = "/auth")
 
 
@@ -31,13 +29,13 @@ def get_db():
         db.close()
 
 
-@router.post("/signup", response_model=user_schema.UserModel)
+@router.post("/signup", response_model=user_schema.RegisterResponse)
 def register(user:user_schema.CreateUser, db: Session = Depends(get_db)):
     get_user = auth_service.check_user(db, email=user.email)
     if get_user:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already used")
-    user = auth_service.create_user(db=db, user=user)
-    return user
+    new_user = auth_service.create_user(db=db, user=user)
+    return new_user
 
 @router.post("/login", response_model=token_models.Token)
 async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()], db:Session=Depends(get_db)):

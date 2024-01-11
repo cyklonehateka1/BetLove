@@ -29,13 +29,11 @@ def authenticate_user(db:Session, username:str, password:str):
     
 
 def create_user(db:Session, user:user_schema.CreateUser):
-
-    changeDate = datetime.strptime(user.dob,"%Y-%m-%d")
     hash_password:str = hash.get_password_hash(user.password)
-    db_user = user_models.User(email=user.email, password=hash_password, name=user.name, dob=changeDate, phone_number=user.phone)
+    db_user = user_models.User(email=user.email, password=hash_password, name=user.name, dob=user.dob, phone_number=user.phone_number)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
-    return db_user
+    return user_schema.RegisterResponse(message = "An email has been sent to you, Click on the link in it to confirm your account")
 
 
