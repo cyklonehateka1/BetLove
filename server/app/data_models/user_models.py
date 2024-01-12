@@ -20,6 +20,6 @@ class User(Base):
     phone_number=Column(String, unique=True, nullable=False)
     created_at=Column(DateTime, default=func.now())
     updated_at=Column(DateTime, default=func.now(), onupdate=func.now())
-    confirmed_account=Column(Boolean, default=func.false())
+    confirmed_account=Column(Boolean, default=func.false(), nullable=False)
     confirmation_tokens = relationship("ConfirmAccountTokens", back_populates="user")
 

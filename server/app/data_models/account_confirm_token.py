@@ -14,8 +14,8 @@ class ConfirmAccountTokens(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True, index=True, nullable=False)
     token = Column(String, nullable=False, unique=True)
-    expires_at= Column(DateTime, default=func.now() + timedelta(minutes=30))
-    confirmed= Column(Boolean, default=func.false())
-    user_id = Column(UUID(as_uuid=True), ForeignKey('users.id'))
+    expires_at= Column(DateTime, default=func.now() + timedelta(minutes=30), nullable=False)
+    confirmed= Column(Boolean, default=func.false(), nullable=False)
+    user_id = Column(UUID(as_uuid=True), ForeignKey('user_schema.users.id'), nullable=False)
 
     user = relationship("User", back_populates="confirmation_tokens")
