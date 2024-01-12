@@ -6,6 +6,7 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from database import Base
 from user_models import *
+from account_confirm_token import *
 
 from alembic import context
 

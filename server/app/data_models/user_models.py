@@ -1,8 +1,9 @@
 import sys
 sys.path.extend(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\config")
 import uuid
-from sqlalchemy import Column, String, Integer, UUID,DateTime,func
+from sqlalchemy import Column, String, Integer, UUID,DateTime,func,Boolean
 from database import Base
+from sqlalchemy.orm import relationship
 
 
 class User(Base):
@@ -19,4 +20,6 @@ class User(Base):
     phone_number=Column(String, unique=True, nullable=False)
     created_at=Column(DateTime, default=func.now())
     updated_at=Column(DateTime, default=func.now(), onupdate=func.now())
+    confirmed_account=Column(Boolean, default=func.false())
+    confirmation_tokens = relationship("ConfirmAccountTokens", back_populates="user")
 
