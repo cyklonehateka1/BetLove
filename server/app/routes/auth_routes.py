@@ -46,10 +46,10 @@ async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()], db:S
 
     return {"access_token": access_token, "token_type": "bearer"}
 
-@router.post('/confirmaccount/{user_id}/{token}', response_model=user_schema.ReqResponse)
+@router.get('/confirmaccount/{user_id}/{token}', response_model=user_schema.ReqResponse)
 def confirm_account(token: str, user_id:str, db:Session=Depends(get_db)):
-    check_token = auth_service.confirm_account(db=db, tokeken=token, user_id=user_id)
+    check_token = auth_service.confirm_account(db=db, token=token, user_id=user_id)
 
-    if check_token == None:
+    if not check_token :
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid token")
     else: return user_schema.ReqResponse(message="Account confirmed successfully. Click on the link below to login")

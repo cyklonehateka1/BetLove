@@ -14,7 +14,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/auth/emailsent" element={<AwaitConfirmEmail />} />
           <Route
-            path="/auth/confirmAccount/:user_id/:token"
+            path="/auth/confirmaccount/:user_id/:token"
             element={<ConfirmAccount />}
           />
         </Routes>

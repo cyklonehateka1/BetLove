@@ -1,4 +1,7 @@
 import sys
+import urllib.parse
+import secrets
+import uuid
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\data_models")
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\schemas")
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\utils")
@@ -40,10 +43,13 @@ def create_user(db:Session, user:user_schema.CreateUser):
     db.refresh(db_user)
 
     get_user_id = check_user(db = db, email=user.email)
-    
-    to_gen_token = hash.get_password_hash(password = user.email + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + user.password)
 
-    link = f'http:localhost:5173/auth/confirmaccount/{get_user_id}/{to_gen_token}'
+    hash_token = secrets.token_urlsafe(32)
+    uuid_token = str(uuid.uuid4()).replace("-", "")
+    
+    to_gen_token = f'{hash_token}_{uuid_token}'
+
+    link = f'http:localhost:5173/auth/confirmaccount/{str(get_user_id)}/{to_gen_token}'
     db_token = account_confirm_token.ConfirmAccountTokens(token=to_gen_token, user=db_user)
     db.add(db_token)
     db.commit()
