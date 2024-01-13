@@ -10,6 +10,7 @@ from typing import Annotated
 from fastapi import HTTPException, status
 import send_email
 import user_models
+import account_confirm_token
 import user_schema
 import hash
 import confirm_email_template
@@ -17,7 +18,7 @@ from datetime import datetime
 
 
 def check_user(db: Session, email: str):
-    return db.query(user_models.User).filter(user_models.User.email == email).first()
+    return db.query(user_models.User.id).filter(user_models.User.email == email).first()
 
 def authenticate_user(db:Session, username:str, password:str):
     user = check_user(db=db, email=username)
@@ -38,12 +39,21 @@ def create_user(db:Session, user:user_schema.CreateUser):
     db.commit()
     db.refresh(db_user)
 
+    get_user_id = check_user(db = db, email=user.email)
+    
     to_gen_token = hash.get_password_hash(password = user.email + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + user.password)
 
-    link = f'http://127.0.0.1:8000/auth/signup/confirmaccount/{to_gen_token}'
+    link = f'http:localhost:5173/auth/confirmaccount/{get_user_id}/{to_gen_token}'
+    db_token = account_confirm_token.ConfirmAccountTokens(token=to_gen_token, user=db_user)
+    db.add(db_token)
+    db.commit()
+    db.refresh(db_token)
 
     send_email.send_mail(recipient = user.email, sender = "cyklonehateka1@gmail.com", subject = "CONFIRM YOUR ACCOUNT", html = confirm_email_template.confirm_email_t(name=user.name, link = link))
 
-    return user_schema.RegisterResponse(message = "An email has been sent to you, Click on the link in it to confirm your account")
+    return user_schema.ReqResponse(message = "An email has been sent to you, Click on the link in it to confirm your account")
+   
+def confirm_account(db:Session, token:str, user_id):
+    return db.query(account_confirm_token.ConfirmAccountTokens).filter(account_confirm_token.ConfirmAccountTokens.token == token, account_confirm_token.ConfirmAccountTokens.user_id == user_id).first()
 
 

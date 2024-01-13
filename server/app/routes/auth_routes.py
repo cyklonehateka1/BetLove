@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends,HTTPException, status
+from fastapi import APIRouter, Depends,HTTPException, status, Path
 import sys
 import os
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\config")
@@ -29,7 +29,7 @@ def get_db():
         db.close()
 
 
-@router.post("/signup", response_model=user_schema.RegisterResponse)
+@router.post("/signup", response_model=user_schema.ReqResponse)
 def register(user:user_schema.CreateUser, db: Session = Depends(get_db)):
     get_user = auth_service.check_user(db, email=user.email)
     if get_user:
@@ -46,6 +46,10 @@ async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()], db:S
 
     return {"access_token": access_token, "token_type": "bearer"}
 
-@router.post('/signup/confirmaccount/{token}')
-def confirm_account():
-    return ""
+@router.post('/confirmaccount/{user_id}/{token}', response_model=user_schema.ReqResponse)
+def confirm_account(token: str, user_id:str, db:Session=Depends(get_db)):
+    check_token = auth_service.confirm_account(db=db, tokeken=token, user_id=user_id)
+
+    if check_token == None:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid token")
+    else: return user_schema.ReqResponse(message="Account confirmed successfully. Click on the link below to login")

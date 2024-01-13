@@ -10,8 +10,9 @@ class UserBase(BaseModel):
 class CreateUser(UserBase):
     password:str
 
-class RegisterResponse(BaseModel):
+class ReqResponse(BaseModel):
     message: str
+
     
 class UserModel(UserBase):
     id: UUID4

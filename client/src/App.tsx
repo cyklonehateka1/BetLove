@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import AwaitConfirmEmail from "./pages/AwaitConfirmEmail";
+import ConfirmAccount from "./pages/ConfirmAccount";
 
 function App() {
   return (
@@ -12,6 +13,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/auth/emailsent" element={<AwaitConfirmEmail />} />
+          <Route
+            path="/auth/confirmAccount/:user_id/:token"
+            element={<ConfirmAccount />}
+          />
         </Routes>
       </Router>
     </div>
