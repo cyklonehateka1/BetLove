@@ -1,7 +1,4 @@
-import sys
-import urllib.parse
-import secrets
-import uuid
+import sys,smtplib, uuid, secrets
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\data_models")
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\schemas")
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\utils")
@@ -49,17 +46,28 @@ def create_user(db:Session, user:user_schema.CreateUser):
     
     to_gen_token = f'{hash_token}_{uuid_token}'
 
-    link = f'http:localhost:5173/auth/confirmaccount/{str(get_user_id)}/{to_gen_token}'
+    link = f'http:localhost:5173/auth/confirmaccount/{str(get_user_id[0])}/{to_gen_token}'
     db_token = account_confirm_token.ConfirmAccountTokens(token=to_gen_token, user=db_user)
     db.add(db_token)
     db.commit()
     db.refresh(db_token)
 
-    send_email.send_mail(recipient = user.email, sender = "cyklonehateka1@gmail.com", subject = "CONFIRM YOUR ACCOUNT", html = confirm_email_template.confirm_email_t(name=user.name, link = link))
-
+    try:
+        send_email.send_mail(recipient = user.email, sender = "cyklonehateka1@gmail.com", subject = "CONFIRM YOUR ACCOUNT", html = confirm_email_template.confirm_email_t(name=user.name, link = link))
+    
+    except smtplib.SMTPException as e:
+        print(e)
+        return e
+    except Exception as e:
+        print(e)
+        return e
     return user_schema.ReqResponse(message = "An email has been sent to you, Click on the link in it to confirm your account")
+
+# def generate_uuid_token():
+    
    
 def confirm_account(db:Session, token:str, user_id):
-    return db.query(account_confirm_token.ConfirmAccountTokens).filter(account_confirm_token.ConfirmAccountTokens.token == token, account_confirm_token.ConfirmAccountTokens.user_id == user_id).first()
+    get_uuid = uuid.UUID(user_id)
+    return db.query(account_confirm_token.ConfirmAccountTokens).filter(account_confirm_token.ConfirmAccountTokens.token == token, account_confirm_token.ConfirmAccountTokens.user_id == get_uuid).first()
 
 

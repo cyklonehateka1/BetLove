@@ -10,7 +10,7 @@ sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\ser
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordRequestForm
 from database import SessionLocal
-from datetime import timedelta
+from datetime import timedelta, datetime
 from typing import Annotated
 from token_service import create_access_token
 import user_models
@@ -52,4 +52,8 @@ def confirm_account(token: str, user_id:str, db:Session=Depends(get_db)):
 
     if not check_token :
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid token")
-    else: return user_schema.ReqResponse(message="Account confirmed successfully. Click on the link below to login")
+    
+    if token.expires_at < datetime.now():
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Token expired")
+    else:
+        return user_schema.ReqResponse(message="Account confirmed successfully. Click on the link below to login")
