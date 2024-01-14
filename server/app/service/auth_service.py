@@ -63,7 +63,16 @@ def create_user(db:Session, user:user_schema.CreateUser):
         return e
     return user_schema.ReqResponse(message = "An email has been sent to you, Click on the link in it to confirm your account")
 
-# def generate_uuid_token():
+def delete_token(db: Session, token_id:uuid):
+    token = db.query(account_confirm_token.ConfirmAccountTokens).filter(account_confirm_token.ConfirmAccountTokens.id == token_id).first()
+
+    if token:
+        db.delete(token)
+        db.commit()
+
+    else:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Something went wrong")
+
     
    
 def confirm_account(db:Session, token:str, user_id):

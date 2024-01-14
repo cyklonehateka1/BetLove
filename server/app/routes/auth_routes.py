@@ -53,7 +53,13 @@ def confirm_account(token: str, user_id:str, db:Session=Depends(get_db)):
     if not check_token :
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid token")
     
-    if token.expires_at < datetime.now():
+    if check_token.expires_at < datetime.now():
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Token expired")
     else:
+        user = check_token.user
+        user.confirmed_account = True
+        check_token.confirmed = True
+        db.commit()
+        db.refresh(user)
+        auth_service.delete_token(db=db, token_id = check_token.id)
         return user_schema.ReqResponse(message="Account confirmed successfully. Click on the link below to login")
