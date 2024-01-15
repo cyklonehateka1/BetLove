@@ -46,7 +46,7 @@ def create_user(db:Session, user:user_schema.CreateUser):
     
     to_gen_token = f'{hash_token}_{uuid_token}'
 
-    link = f'http:localhost:5173/auth/confirmaccount/{str(get_user_id[0])}/{to_gen_token}'
+    link = f'http://localhost:5173/auth/confirmaccount/{str(get_user_id[0])}/{to_gen_token}'
     db_token = account_confirm_token.ConfirmAccountTokens(token=to_gen_token, user=db_user)
     db.add(db_token)
     db.commit()

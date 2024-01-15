@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import AwaitConfirmEmail from "./pages/AwaitConfirmEmail";
 import ConfirmAccount from "./pages/ConfirmAccount";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             path="/auth/confirmaccount/:user_id/:token"
             element={<ConfirmAccount />}
           />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </div>

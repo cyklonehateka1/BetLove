@@ -20,7 +20,7 @@ def confirm_email_t(name:str, link:str)->str:
                 </p>
 
                 <p style="margin-bottom: 20px;">
-                    <a href={link} style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: #fff; text-decoration: none; border-radius: 3px;">Confirm Your Email</a>
+                    <a href="{link}" style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: #fff; text-decoration: none; border-radius: 3px;">Confirm Your Email</a>
                 </p>
 
                 <p style="color: #555; line-height: 1.6;">
