@@ -15,7 +15,7 @@ const Login = () => {
     password: "",
   });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
@@ -31,20 +31,19 @@ const Login = () => {
 
   const { username, password } = input;
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (username.trim() === "") {
       setError({ ...error, emailInputError: "emailInputError" });
       return;
-    }
-    if (password.trim() === "") {
+    } else if (password.trim() === "") {
       setError({ ...error, passwordInputError: "passwordInputError" });
       return;
     }
   };
 
-  const handleNavigate = (e: any) => {
+  const handleNavigate = (e: React.MouseEvent) => {
     e.preventDefault();
     navigate("/register");
   };
@@ -55,11 +54,11 @@ const Login = () => {
         <div className="imgCont">
           <img src="https://i.ibb.co/nMD7gp1/Bet-Love-Logo.png" alt="" />
         </div>
-        <h3>for the love of the game</h3>
-        <p>welcome back, please login to your account</p>
+        <h3>For the love of the game</h3>
+        <p>Welcome back, please login to your account</p>
         <form action="" onSubmit={handleSubmit}>
           <div className="email">
-            {/* The field itself accepts an email but FastAPI Oauth2 requires a username and password */}
+            {/* The field itself accepts an email but FastAPI Oauth2 requires the field to be named username  */}
             <label htmlFor="username">Email</label>
             <input
               type="email"
@@ -95,9 +94,7 @@ const Login = () => {
             <Link to="/">Forgot password?</Link>
           </div>
           <div className="buttons">
-            <button className="loginButton" onClick={handleSubmit}>
-              Login
-            </button>
+            <button className="loginButton">Login</button>
             <button className="signUpButton" onClick={(e) => handleNavigate(e)}>
               Sign Up
             </button>

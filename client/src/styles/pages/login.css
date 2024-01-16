@@ -191,6 +191,6 @@
 }
 
 .login>.loginCont>form>.email>.emailInputError,
-.login>.loginCont>form>.password>div>.passwordInputError {
+.login>.loginCont>form>.password>.passwordInputError {
     border: 1px solid rgb(255, 29, 29);
 }
