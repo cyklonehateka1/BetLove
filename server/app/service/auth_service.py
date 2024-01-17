@@ -20,8 +20,11 @@ from datetime import datetime
 def check_user(db: Session, email: str):
     return db.query(user_models.User.id).filter(user_models.User.email == email).first()
 
+def login_check_user(db: Session, email: str):
+    return db.query(user_models.User).filter(user_models.User.email == email).first()
+
 def authenticate_user(db:Session, username:str, password:str):
-    user = check_user(db=db, email=username)
+    user = login_check_user(db=db, email=username)
 
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="No user found")

@@ -2,6 +2,7 @@ import "../styles/pages/login.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { backendConnection } from "../utils/axiosInstance";
 
 const Login = () => {
   const [viewPassword, setViewPassword] = useState(false);
@@ -17,6 +18,7 @@ const Login = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput({ ...input, [e.target.name]: e.target.value });
+    setResError("");
   };
 
   const handlePasswordVisibility = () => {
@@ -31,7 +33,10 @@ const Login = () => {
 
   const { username, password } = input;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const loginData = new URLSearchParams({ username, password }).toString();
+  console.log(loginData);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (username.trim() === "") {
@@ -40,6 +45,19 @@ const Login = () => {
     } else if (password.trim() === "") {
       setError({ ...error, passwordInputError: "passwordInputError" });
       return;
+    }
+
+    try {
+      const res = await backendConnection.post("/auth/login", loginData, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
+    } catch (error: any) {
+      setResError(
+        error.response ? error.response.data.detail : "Something went wrong"
+      );
+      console.log(error);
     }
   };
 
@@ -93,6 +111,7 @@ const Login = () => {
             </div>
             <Link to="/">Forgot password?</Link>
           </div>
+          <span>{resError}</span>
           <div className="buttons">
             <button className="loginButton">Login</button>
             <button className="signUpButton" onClick={(e) => handleNavigate(e)}>
