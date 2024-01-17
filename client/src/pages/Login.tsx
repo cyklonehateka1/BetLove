@@ -54,7 +54,7 @@ const Login = () => {
           "Content-Type": "application/x-www-form-urlencoded",
         },
       });
-      Cookies.set("access_token", res.data.access_token);
+      Cookies.set("access_token", res.data.access_token, { expires: 3 });
     } catch (error: any) {
       setResError(
         error.response ? error.response.data.detail : "Something went wrong"
