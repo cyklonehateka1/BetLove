@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { backendConnection } from "../utils/axiosInstance";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [viewPassword, setViewPassword] = useState(false);
@@ -53,6 +54,7 @@ const Login = () => {
           "Content-Type": "application/x-www-form-urlencoded",
         },
       });
+      Cookies.set("access_token", res.data.access_token);
     } catch (error: any) {
       setResError(
         error.response ? error.response.data.detail : "Something went wrong"
