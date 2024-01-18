@@ -42,7 +42,7 @@ async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()], db:S
     user = auth_service.authenticate_user(db=db, username=form_data.username, password=form_data.password)
     expire:timedelta = timedelta(minutes=15)
     secret_key:str | None = os.environ.get('jwt_secrete')
-    access_token = create_access_token(data={"sub": user.email}, secret_key=secret_key, expires_delta=expire)
+    access_token = create_access_token(data={"email": user.email}, secret_key=secret_key, expires_delta=expire)
 
     return {"access_token": access_token, "token_type": "bearer"}
 
