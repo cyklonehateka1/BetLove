@@ -1,4 +1,4 @@
-import sys,smtplib, uuid, secrets
+import sys,smtplib, uuid, secrets, os
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\data_models")
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\schemas")
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\utils")
@@ -7,7 +7,13 @@ sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\ser
 sys.path.append(r"C:\Users\WINDOWS\fullstack_with_mysql\Betlove_with_fastapi\server\app\templates")
 from sqlalchemy.orm import Session
 from typing import Annotated
-from fastapi import HTTPException, status
+from fastapi import HTTPException, status, Depends
+from fastapi.security import OAuth2PasswordBearer
+from dotenv import load_dotenv
+load_dotenv()
+from token_service import verify_token
+from jose import JWTError
+
 import send_email
 import user_models
 import account_confirm_token
@@ -15,7 +21,6 @@ import user_schema
 import hash
 import confirm_email_template
 from datetime import datetime
-
 
 def check_user(db: Session, email: str):
     return db.query(user_models.User.id).filter(user_models.User.email == email).first()
@@ -82,4 +87,27 @@ def confirm_account(db:Session, token:str, user_id):
     get_uuid = uuid.UUID(user_id)
     return db.query(account_confirm_token.ConfirmAccountTokens).filter(account_confirm_token.ConfirmAccountTokens.token == token, account_confirm_token.ConfirmAccountTokens.user_id == get_uuid).first()
 
+oauth_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
+
+async def get_user_details(db:Session, token:Annotated[str, Depends(oauth_scheme)]):
+    if not token:
+            HTTPException(status_code=401, detail="Not authenticated", headers={"WWW-Authenticate": "Bearer"})
+    try:
+
+        secret_key:str | None = os.environ.get('jwt_secrete')
+        validate_token = verify_token(token=token, secret_key=secret_key)
+        user_email = validate_token.get("email")
+
+    except JWTError:
+        return HTTPException(status_code=401, detail="Invalid token", headers={"WWW-Authenticate": "Bearer"})
+
+    user = login_check_user(db=db, email=user_email)
+
+    if user is None:
+        HTTPException(status_code=401, detail="Not authenticated", headers={"WWW-Authenticate": "Bearer"})
+
+    return user
+
+async def get_current_user(user:Annotated[user_schema.UserModel, Depends(get_user_details)]):
+    return user
 
