@@ -30,7 +30,7 @@ const AllFootball = () => {
               </button>
             </div>
             <div className="teamDet">
-              <div className="h5">Chelsea</div>
+              <h5>Chelsea</h5>
               <div className="imgCont">
                 <img src="./photos/chelsea.png" alt="" />
               </div>

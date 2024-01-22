@@ -91,7 +91,7 @@ oauth_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
 async def get_user_details(db:Session, token:Annotated[str, Depends(oauth_scheme)]):
     if not token:
-            HTTPException(status_code=401, detail="Not authenticated", headers={"WWW-Authenticate": "Bearer"})
+        raise HTTPException(status_code=401, detail="Not authenticated", headers={"WWW-Authenticate": "Bearer"})
     try:
 
         secret_key:str | None = os.environ.get('jwt_secrete')
@@ -99,13 +99,12 @@ async def get_user_details(db:Session, token:Annotated[str, Depends(oauth_scheme
         user_email = validate_token.get("email")
 
     except JWTError:
-        return HTTPException(status_code=401, detail="Invalid token", headers={"WWW-Authenticate": "Bearer"})
+        raise HTTPException(status_code=401, detail="Invalid token", headers={"WWW-Authenticate": "Bearer"})
 
     user = login_check_user(db=db, email=user_email)
 
     if user is None:
-        HTTPException(status_code=401, detail="Not authenticated", headers={"WWW-Authenticate": "Bearer"})
-
+        raise HTTPException(status_code=401, detail="Not authenticated", headers={"WWW-Authenticate": "Bearer"})
     return user
 
 async def get_current_user(user:Annotated[user_schema.UserModel, Depends(get_user_details)]):

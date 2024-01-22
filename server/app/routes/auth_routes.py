@@ -64,4 +64,6 @@ def confirm_account(token: str, user_id:str, db:Session=Depends(get_db)):
         auth_service.delete_token(db=db, token_id = check_token.id)
         return user_schema.ReqResponse(message="Account confirmed successfully. Click on the link below to login")
     
-def get_current_user_details(db:Annotated[Session, Depends()], user:Annotated[user_schema.UserModel, Depends(auth_service.get_current_user)]):
+@router.get("/auth/getuserdetails")
+async def get_current_user_details(db:Annotated[Session, Depends(get_db)], user:Annotated[user_schema.UserModel, Depends(auth_service.get_current_user)]):
+    return 
