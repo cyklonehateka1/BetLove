@@ -13,21 +13,26 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    background-color: #77777757;
 }
 
 .allFootballComp>.aFCCont>.betsBar>.left {
+    width: 37%;
+    /* border: 1px solid red; */
     display: flex;
     align-items: center;
     font-size: 14px;
     font-weight: 500;
     color: #bdbdbd;
-    width: 10%;
-    justify-content: space-between;
+}
+
+.allFootballComp>.aFCCont>.betsBar>.left>span {
+    margin-right: 27px;
 }
 
 .allFootballComp>.aFCCont>.betsBar>.center {
-    width: 40%;
+    width: 24%;
     display: flex;
     font-size: 14px;
     font-weight: 500;
@@ -36,65 +41,21 @@
     /* border: 1px solid red; */
 }
 
-.allFootballComp>.aFCCont>.betsBar>span {
-    font-size: 14px;
-    font-weight: 500;
-    color: #bdbdbd;
+.allFootballComp>.aFCCont>.betsBar>.center>span {
+    /* border: 1px solid red; */
+    width: 33.33%;
+    display: flex;
+    justify-content: center;
 }
 
-.allFootballComp>.aFCCont>.betRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.allFootballComp>.aFCCont>.betRow>.left {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.allFootballComp>.aFCCont>.betsBar>.right {
     width: 37%;
-    border: 1px solid red;
-}
-
-.allFootballComp>.aFCCont>.betRow>.left>.timeStats {
-    width: 100px;
-    border: 1px solid red;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-end;
 }
 
-.allFootballComp>.aFCCont>.betRow>.left>.timeStats>div>span {
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.allFootballComp>.aFCCont>.betRow>.left>.timeStats>div>p {
-    font-size: 12px;
+.allFootballComp>.aFCCont>.betsBar>.right>span {
+    font-size: 14px;
     font-weight: 500;
     color: #bdbdbd;
-}
-
-.allFootballComp>.aFCCont>.betRow>.left>.teamDet>h5 {
-    font-size: 14px;
-    font-weight: bold;
-    margin-right: 10px;
-    color: white
-}
-
-.allFootballComp>.aFCCont>.betRow>.left>.teamDet {
-    display: flex;
-    align-items: center;
-}
-
-.allFootballComp>.aFCCont>.betRow>.left>.teamDet>h5 {
-    font-size: 14px;
-    font-weight: 500;
-    margin-right: 10px;
-    color: white
-}
-
-.allFootballComp>.aFCCont>.betRow img {
-    width: 40px
 }

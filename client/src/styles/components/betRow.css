@@ -1,0 +1,132 @@
+.betRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+    background-color: #7777771c;
+    padding: 5px;
+}
+
+.betRow>.left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 37%;
+}
+
+.betRow>.left>.timeStats {
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.betRow>.left>.timeStats>div>span {
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+
+}
+
+.betRow>.left>.timeStats>div>p {
+    font-size: 12px;
+    font-weight: 500;
+    color: #bdbdbd;
+}
+
+.betRow>.left>.timeStats>button {
+    width: 35px;
+    height: 35px;
+    background-color: #77777757;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+}
+
+.betRow>.left>.teamDet {
+    display: flex;
+    align-items: center;
+}
+
+.betRow>.left>.teamDet>h5 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 10px;
+    color: white
+}
+
+.betRow>.left>.teamDet>.imgCont {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #77777725;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.betRow>.left>.teamDet>.imgCont>img {
+    width: 40px
+}
+
+.betRow>.center {
+    width: 23%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.betRow>.center>button {
+    width: 50px;
+    height: 40px;
+    background-color: #77777757;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+}
+
+.betRow>.right {
+    width: 37%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.betRow>.right>.teamDet {
+    align-items: center;
+    display: flex;
+}
+
+.betRow>.right>.teamDet>h5 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 10px;
+    color: white
+}
+
+.betRow>.right>.teamDet>.imgCont {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #77777725;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.betRow>.right>.teamDet>.imgCont>img {
+    width: 40px
+}
+
+.betRow>.right>button {
+    width: 55px;
+    height: 31px;
+    background-color: #77777757;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+}
