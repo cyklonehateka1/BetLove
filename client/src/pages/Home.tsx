@@ -5,6 +5,7 @@ import Leagues from "../components/Leagues";
 import LiveMatch from "../components/LiveMatch";
 import LiveTrendingMatch from "../components/LiveTrendingMatch";
 import Navbar from "../components/Navbar";
+import RightBetslip from "../components/RightBetslip";
 import SideMenu from "../components/SideMenu";
 import "../styles/pages/home.css";
 
@@ -36,7 +37,9 @@ const Home = () => {
             <Label />
             <AllFootball />
           </div>
-          <div className="right"></div>
+          <div className="right">
+            <RightBetslip />
+          </div>
         </div>
       </div>
     </div>

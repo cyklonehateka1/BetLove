@@ -16,7 +16,6 @@
     height: 100vh;
     width: 96%;
     position: relative;
-
     left: 4%;
 }
 
@@ -26,6 +25,7 @@
     position: relative;
     height: 88.6%;
     top: 11.4vh;
+    justify-content: space-between;
 
 }
 
@@ -52,4 +52,13 @@
 
 .home>.homeCont>.homeContent>.center>.liveMatchesParent>div {
     width: 31.5%;
+}
+
+.home>.homeCont>.homeContent>.right {
+    border: 2px solid red;
+    width: 18%;
+    position: fixed;
+    left: 80.1%;
+    height: 85vh;
+    border-radius: 10px;
 }
