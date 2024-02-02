@@ -1,4 +1,5 @@
 import "../styles/components/rightBetslip.css";
+import SelectedBet from "./SelectedBet";
 const RightBetslip = () => {
   return (
     <div className="rightBetSlip">
@@ -11,7 +12,9 @@ const RightBetslip = () => {
               <button className="multiple">Multiple</button>
             </div>
           </div>
-          <div className="selectedBets"></div>
+          <div className="selectedBets">
+            <SelectedBet />
+          </div>
         </div>
       </div>
     </div>
