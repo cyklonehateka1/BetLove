@@ -1,5 +1,7 @@
 import "../styles/components/rightBetslip.css";
 import SelectedBet from "./SelectedBet";
+import OddsAndStakeAmount from "./OddsAndStakeAmount"
+
 const RightBetslip = () => {
   return (
     <div className="rightBetSlip">
@@ -15,6 +17,7 @@ const RightBetslip = () => {
           <div className="selectedBets">
             <SelectedBet />
           </div>
+          <OddsAndStakeAmount/>
         </div>
       </div>
     </div>
